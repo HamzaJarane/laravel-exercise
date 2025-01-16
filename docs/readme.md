@@ -3,7 +3,7 @@
 # Import Products Command
 
 ## Overview
-The `ImportProducts` class is a Laravel console command used to import product data into the database from a CSV file or an API source. It offers various options for controlling the import behavior and provides feedback during the process.
+The `ImportProducts` class is a Laravel console command used to import product data into the database from a CSV file or an API source. It offers various options for controlling the import behavior and provides feedback during the process, the script uses league/csv package to read the csv file and convert it to associative array.
 
 ---
 
