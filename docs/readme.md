@@ -497,3 +497,107 @@ To ensure the `Product` model can be soft-deleted correctly.
 #### **Assertions**
 - Uses `assertModelExists` to confirm the model is present before deletion.
 - Uses `assertSoftDeleted` to confirm the model is soft-deleted.
+
+
+# Collections
+
+## Overview
+
+The `ProductCollection` and `ProductVariationCollection` classes is are resource collections for transforming the `Product` and `ProductVariation` models instance into an API-friendly array structure. They extends Laravel's `JsonResource` to provide a standardized way to present product data in API responses.
+
+#### ProductCollection - Properties Transformed:
+- `id`: The unique identifier for the product.
+- `name`: The name of the product.
+- `image`: URL or path to the product image.
+- `sku`: The stock-keeping unit for the product.
+- `status`: The current status of the product.
+- `price`: The price of the product.
+- `currency`: The currency for the price.
+- `quantity`: The base quantity of the product.
+- `product_quantity`: The calculated product quantity considering variations.
+- `variations`: A collection of product variations, loaded when the `variations` relationship is eager-loaded.
+
+#### ProductVariationCollection - Properties Transformed:
+- `id`: The unique identifier for the variation.
+- `payload`: Additional data associated with the variation (stored as JSON).
+- `quantity`: The available quantity for this variation.
+- `availability`: The availability status of the variation.
+- `product_availability`: A computed attribute reflecting the availability status based on quantity.
+
+
+
+
+
+
+# Controllers
+
+## Overview
+The `ProductController` handles API requests related to the `Product` model, for listing and displaying products.
+
+## Methods
+
+### `index()`
+**Description:**
+Returns a collection of all products in the database.
+
+**Usage:**
+```http
+GET /api/products
+```
+
+**Returns:**
+- A JSON response containing all products wrapped in the `ProductCollection` resource.
+
+**Example:**
+```json
+[
+   {
+      "id": 1,
+      "name": "Product Name",
+      "image": "image_url",
+      "sku": "12345",
+      "status": "sale",
+      "price": 100,
+      "currency": "USD",
+      "quantity": 50,
+      "product_quantity": [50],
+      "variations": [],
+   }
+]
+```
+
+---
+
+### `show(Product $product)`
+**Description:**
+Returns a single product's details by its ID using route model binding.
+
+**Usage:**
+```http
+GET /api/products/{id}
+```
+
+**Parameters:**
+- `Product $product` (Automatically resolved by route model binding)
+
+**Returns:**
+- A JSON response containing the product details wrapped in the `ProductCollection` resource.
+
+**Example:**
+```json
+{
+  "id": 1,
+  "name": "Product Name",
+  "image": "image_url",
+  "sku": "12345",
+  "status": "sale",
+  "price": 100,
+  "currency": "USD",
+  "quantity": 50,
+  "product_quantity": [50],
+  "variations": [],
+}
+```
+
+## Resource Integration
+- **`ProductCollection`** is used to standardize the output format for both multiple and single product responses.
