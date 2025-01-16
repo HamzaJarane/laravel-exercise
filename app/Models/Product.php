@@ -51,7 +51,7 @@ class Product extends Model
         return new Attribute(
             get: function (): array {
                 if($this->variations->count() > 0) {
-                    return $this->variations->pluck('quantity')->get();
+                    return $this->variations()->pluck('quantity')->toArray();
                 }
                 return [$this->quantity];
             },
