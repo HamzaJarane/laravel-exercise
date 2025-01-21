@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 
-interface BaseService
+interface BaseServiceInterface
 {
     public function getModel(): Model;
 

@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Interfaces\BaseService;
+use App\Interfaces\BaseServiceInterface;
 use App\Models\Product;
 
-class ProductService implements BaseService
+class ProductService implements BaseServiceInterface
 {
     protected Product $product;
 
