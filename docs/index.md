@@ -1,21 +1,21 @@
-# [Command](/command)
+# [Command](command)
 
-# [Factories](/factories)
+# [Factories](factories)
 
-# [Models](/models)
+# [Models](models)
 
-# [Events](/events)
+# [Events](events)
 
-# [Providers](/providers)
+# [Providers](providers)
 
-# [interfaces](/interfaces)
+# [interfaces](interfaces)
 
-# [Listeners](/listeners)
+# [Listeners](listeners)
 
-# [Collections](/collection)
+# [Collections](collection)
 
-# [Controllers](/controllers)
+# [Controllers](controllers)
 
-# [ObServers](/observers)
+# [ObServers](observers)
 
-# [Tests](/tests)
+# [Tests](tests)
